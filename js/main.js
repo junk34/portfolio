@@ -5,7 +5,9 @@ let i = 0, j = 0;
 
 function typeEffect() {
   if (j < texts[i].length) {
-    tagline.textContent += texts[i][j];
+    const char = texts[i][j];
+    const glitch = Math.random() < 0.1 ? String.fromCharCode(33 + Math.floor(Math.random() * 94)) : char;
+    tagline.textContent += glitch;
     j++;
     setTimeout(typeEffect, 100);
   } else {

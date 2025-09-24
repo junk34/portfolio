@@ -1,10 +1,13 @@
 /* Fonts & Basics */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=UnifrakturCook&family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap');
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background: #111;
   color: #ddd;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
@@ -18,6 +21,7 @@ body {
   align-items: center;
   text-align: center;
   color: #f5f5f5;
+  overflow: hidden;
 }
 
 #hero::after {
@@ -26,19 +30,67 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.fog-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("../images/fog.png") repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+/* Typography */
+h1, h2, .logo {
+  font-family: 'Creepster', cursive;
+  color: #e4dcdc;
+  text-shadow: 0 0 10px rgba(139,0,0,0.8);
 }
 
 h1 {
-  font-family: 'Cinzel', serif;
   font-size: 3rem;
   margin: 0.5em 0;
-  color: #e4dcdc;
-  text-shadow: 0 0 10px rgba(139,0,0,0.8);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+}
+
+.section-title {
+  font-family: 'UnifrakturCook', cursive;
+}
+
+/* Glitch Effect */
+.glitch {
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+/* Flicker Effect */
+.flicker {
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.4; }
 }
 
 /* Navbar */
@@ -55,7 +107,6 @@ h1 {
 }
 
 .navbar .logo {
-  font-family: 'Cinzel', serif;
   font-size: 1.5rem;
   color: #b00;
 }
@@ -89,6 +140,7 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   margin: 0 auto 1rem auto;
+  box-shadow: 0 0 10px #b00;
 }
 
 /* Buttons */
@@ -99,6 +151,7 @@ button, .cta {
   padding: 0.6em 1.2em;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Cinzel', serif;
 }
 
 button:hover, .cta:hover {
@@ -111,13 +164,6 @@ button:hover, .cta:hover {
 section {
   padding: 4em 10%;
   position: relative;
-}
-
-h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  margin-bottom: 1em;
-  color: #e4dcdc;
 }
 
 /* Projects */
@@ -137,6 +183,24 @@ h2 {
 .project:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 15px rgba(176,0,0,0.7);
+}
+
+.tech-badge {
+  display: inline-block;
+  margin-top: 0.5em;
+  padding: 0.3em 0.6em;
+  background: #b00;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+#tagline {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 1.2rem;
+  color: #b00;
+  text-shadow: 0 0 5px #b00;
+  animation: flicker 2s infinite;
 }
 
 /* Skills */
@@ -159,6 +223,48 @@ h2 {
   color: #fff;
 }
 
+/* Timeline */
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  margin-bottom: 1em;
+  font-family: 'Cinzel', serif;
+}
+
+/* Contact */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+input, textarea {
+  padding: 0.8em;
+  background: #222;
+  border: 1px solid #444;
+  color: #ddd;
+  border-radius: 5px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #b00;
+  box-shadow: 0 0 5px #b00;
+}
+
+.socials a {
+  margin-right: 1em;
+  color: #b00;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  text-decoration: underline;
+}
+
 /* Footer */
 footer {
   background: #111;
@@ -167,6 +273,7 @@ footer {
   font-size: 0.9rem;
   color: #777;
 }
+
 
 
 
