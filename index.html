@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arzoo | Developer Portfolio</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="hero">
+    <nav class="navbar">
+      <div class="logo">Arzoo</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <div class="hero-content">
+      <div class="avatar-circle">A</div>
+      <h1>Hi, I'm Arzoo</h1>
+      <p id="tagline"></p>
+      <button class="cta" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div>
+          <p>I’m a software engineering student at Sheffield Hallam University. I love building immersive, genre-bending experiences—from budget trackers to horror games.</p>
+        </div>
+        <div>
+          <ul>
+            <li>🎮 Unity horror game dev</li>
+            <li>🏎️ F1 simulation & data viz</li>
+            <li>🧠 Fluent in C#, Java, Python, C++</li>
+            <li>💡 Creative + technical thinker</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="filter-buttons">
+        <button data-filter="all">All Projects</button>
+        <button data-filter="university">University</button>
+        <button data-filter="personal">Personal</button>
+      </div>
+      <ul id="project-list">
+        <li class="project university reveal">
+          <h3>Budget Tracker</h3>
+          <p>Track expenses with real-time analytics and clean UI.</p>
+          <span class="tech-badge">Java, MySQL</span>
+        </li>
+        <li class="project university reveal">
+          <h3>College Website</h3>
+          <p>Responsive site with student portal and admin dashboard.</p>
+          <span class="tech-badge">HTML, CSS, JavaScript</span>
+        </li>
+        <li class="project university reveal">
+          <h3>Autodesk Asset Manager</h3>
+          <p>Inventory system for managing software licenses and assets.</p>
+          <span class="tech-badge">C#, SQL Server</span>
+        </li>
+        <li class="project personal reveal">
+          <h3>F1 Lap Simulator</h3>
+          <p>Streamlit app using Python, NumPy, and Matplotlib to visualize race strategy.</p>
+          <span class="tech-badge">Python, Streamlit</span>
+        </li>
+        <li class="project personal reveal">
+          <h3>Unity Horror Game</h3>
+          <p>A psychological thriller with custom AI and grotesque transformations.</p>
+          <span class="tech-badge">Unity, C#</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <input type="text" id="skill-search" placeholder="Search skills...">
+      <div class="skills-grid">
+        <span class="reveal">C#</span>
+        <span class="reveal">Java</span>
+        <span class="reveal">Python</span>
+        <span class="reveal">HTML/CSS</span>
+        <span class="reveal">C++</span>
+        <span class="reveal">Unity</span>
+        <span class="reveal">Streamlit</span>
+        <span class="reveal">Matplotlib</span>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul class="timeline">
+        <li><span>🎓</span> 2025 – Autodesk Asset Manager (University)</li>
+        <li><span>🏎️</span> 2024 – F1 Lap Simulator (Personal)</li>
+        <li><span>🌐</span> 2023 – College Website (Coursework)</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form>
+        <input type="email" placeholder="Your email" required>
+        <textarea placeholder="Your message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div class="socials">
+        <a href="https://github.com/arzoo" target="_blank">GitHub</a>
+        <a href="mailto:arzoo@example.com">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Arzoo</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+
