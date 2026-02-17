@@ -1,89 +1,170 @@
-/* Fonts & Basics */
+/* ---------------------------------------------------
+   FONTS & GLOBAL
+--------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Creepster&family=UnifrakturCook&family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap');
 
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #111;
-  color: #ddd;
-  line-height: 1.6;
+  background: #0c0c0c;
+  color: #dcdcdc;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Hero Section */
+/* Slight Silent Hill 2 green tint */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 40, 20, 0.15);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------
+   VHS NOISE OVERLAY
+--------------------------------------------------- */
+.vhs-noise {
+  position: fixed;
+  inset: 0;
+  background: url("../images/noise.png");
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ---------------------------------------------------
+   CURSOR GHOST TRAIL
+--------------------------------------------------- */
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #b00;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease;
+  z-index: 99999;
+}
+
+.cursor-trail.active {
+  opacity: 0.6;
+}
+
+/* ---------------------------------------------------
+   HERO SECTION
+--------------------------------------------------- */
 #hero {
   height: 100vh;
-  background: url("../images/silent hill.jpg") no-repeat center center/cover;
+  background: url("../images/silent hill.jpg") no-repeat center/cover;
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #f5f5f5;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
+/* Dark foggy overlay */
 #hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.55);
   backdrop-filter: blur(2px);
+  z-index: 2;
+}
+
+/* ---------------------------------------------------
+   FOG LAYERS (Animated)
+--------------------------------------------------- */
+.fog-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%;
+  height: 100%;
+  background: url("../images/fog.png") repeat-x;
+  opacity: 0.18;
+  pointer-events: none;
   z-index: 1;
 }
 
-.fog-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url("../images/fog.png") repeat;
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: 0;
+.fog-back {
+  animation: fogMove 60s linear infinite;
+}
+
+.fog-front {
+  opacity: 0.25;
+  animation: fogMove 35s linear infinite reverse;
+}
+
+@keyframes fogMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* Typography */
+/* ---------------------------------------------------
+   TYPOGRAPHY
+--------------------------------------------------- */
 h1, h2, .logo {
   font-family: 'Creepster', cursive;
-  color: #e4dcdc;
-  text-shadow: 0 0 10px rgba(139,0,0,0.8);
-}
-
-h1 {
-  font-size: 3rem;
-  margin: 0.5em 0;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1em;
+  color: #e8e8e8;
+  text-shadow: 0 0 12px rgba(139,0,0,0.8);
 }
 
 .section-title {
   font-family: 'UnifrakturCook', cursive;
 }
 
-/* Glitch Effect */
+/* ---------------------------------------------------
+   GLITCH EFFECT
+--------------------------------------------------- */
 .glitch {
-  animation: glitch 1s infinite;
+  position: relative;
+  animation: glitchSkew 1.5s infinite;
 }
 
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-1px, 1px); }
-  80% { transform: translate(1px, -1px); }
-  100% { transform: translate(0); }
+@keyframes glitchSkew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(2deg); }
+  40% { transform: skew(-2deg); }
+  60% { transform: skew(1deg); }
+  80% { transform: skew(-1deg); }
+  100% { transform: skew(0deg); }
 }
 
-/* Flicker Effect */
+/* Chromatic aberration on hover */
+.glitch:hover {
+  text-shadow:
+    2px 0 red,
+    -2px 0 cyan;
+}
+
+/* ---------------------------------------------------
+   STATIC BURST EFFECT
+--------------------------------------------------- */
+.static-burst {
+  animation: staticFlash 0.15s steps(2) forwards;
+}
+
+@keyframes staticFlash {
+  0% { filter: contrast(200%) brightness(150%); }
+  100% { filter: none; }
+}
+
+/* ---------------------------------------------------
+   FLICKER EFFECT
+--------------------------------------------------- */
 .flicker {
   animation: flicker 2s infinite;
 }
@@ -93,7 +174,9 @@ h2 {
   20%, 22%, 24%, 55% { opacity: 0.4; }
 }
 
-/* Navbar */
+/* ---------------------------------------------------
+   NAVBAR
+--------------------------------------------------- */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -101,13 +184,13 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
-  background: rgba(20,20,20,0.6);
+  background: rgba(10,10,10,0.6);
   backdrop-filter: blur(5px);
   z-index: 100;
 }
 
 .navbar .logo {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #b00;
 }
 
@@ -121,68 +204,78 @@ h2 {
   text-decoration: none;
   color: #ddd;
   font-weight: 600;
-  transition: color 0.3s;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
   color: #b00;
+  text-shadow: 0 0 8px #b00;
 }
 
-/* Avatar Circle */
+/* ---------------------------------------------------
+   AVATAR CIRCLE
+--------------------------------------------------- */
 .avatar-circle {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   background: #b00;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   margin: 0 auto 1rem auto;
-  box-shadow: 0 0 10px #b00;
+  box-shadow: 0 0 15px #b00;
 }
 
-/* Buttons */
+/* ---------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
 button, .cta {
   background: transparent;
   border: 2px solid #b00;
   color: #ddd;
   padding: 0.6em 1.2em;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
   font-family: 'Cinzel', serif;
 }
 
 button:hover, .cta:hover {
   background: #b00;
   color: #fff;
-  box-shadow: 0 0 10px #b00;
+  box-shadow: 0 0 12px #b00;
 }
 
-/* Sections */
+/* ---------------------------------------------------
+   SECTIONS
+--------------------------------------------------- */
 section {
   padding: 4em 10%;
   position: relative;
+  z-index: 3;
 }
 
-/* Projects */
+
 #project-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5em;
 }
 
 .project {
-  background: rgba(40,40,40,0.8);
-  padding: 1em;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  border: 1px solid #3a3a3a;
+  padding: 1.2em;
   border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+  transition: 0.3s;
 }
 
 .project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(176,0,0,0.7);
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(176,0,0,0.8);
 }
 
 .tech-badge {
@@ -197,13 +290,12 @@ section {
 
 #tagline {
   font-family: 'UnifrakturCook', cursive;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #b00;
-  text-shadow: 0 0 5px #b00;
-  animation: flicker 2s infinite;
+  text-shadow: 0 0 6px #b00;
 }
 
-/* Skills */
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -211,11 +303,11 @@ section {
 }
 
 .skills-grid span {
-  background: rgba(30,30,30,0.8);
+  background: rgba(25,25,25,0.85);
   padding: 0.6em;
   text-align: center;
   border-radius: 8px;
-  transition: background 0.3s ease;
+  transition: 0.3s;
 }
 
 .skills-grid span:hover {
@@ -223,23 +315,18 @@ section {
   color: #fff;
 }
 
-/* Timeline */
-.timeline {
-  list-style: none;
-  padding: 0;
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.8s ease-out;
 }
 
-.timeline li {
-  margin-bottom: 1em;
-  font-family: 'Cinzel', serif;
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Contact */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
 
 input, textarea {
   padding: 0.8em;
@@ -252,27 +339,17 @@ input, textarea {
 input:focus, textarea:focus {
   outline: none;
   border-color: #b00;
-  box-shadow: 0 0 5px #b00;
+  box-shadow: 0 0 6px #b00;
 }
 
-.socials a {
-  margin-right: 1em;
-  color: #b00;
-  text-decoration: none;
-}
 
-.socials a:hover {
-  text-decoration: underline;
-}
-
-/* Footer */
 footer {
-  background: #111;
+  background: #0c0c0c;
   padding: 1.5em;
   text-align: center;
-  font-size: 0.9rem;
   color: #777;
 }
+
 
 
 

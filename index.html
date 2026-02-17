@@ -4,87 +4,125 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arzoo | Developer Portfolio</title>
+
+  <!-- Horror Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=UnifrakturCook&family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Main Styles -->
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+  <!-- GLOBAL VHS NOISE OVERLAY -->
+  <div class="vhs-noise"></div>
+
+  <!-- CURSOR GHOST TRAIL -->
+  <div class="cursor-trail"></div>
+
   <header id="hero">
+
+    <!-- MOVING FOG LAYERS -->
+    <div class="fog-layer fog-back"></div>
+    <div class="fog-layer fog-front"></div>
+
     <nav class="navbar">
-      <div class="logo">Arzoo</div>
+      <div class="logo glitch">Arzoo</div>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" class="nav-glitch">About</a></li>
+        <li><a href="#projects" class="nav-glitch">Projects</a></li>
+        <li><a href="#skills" class="nav-glitch">Skills</a></li>
+        <li><a href="#experience" class="nav-glitch">Experience</a></li>
+        <li><a href="#contact" class="nav-glitch">Contact</a></li>
       </ul>
       <button id="theme-toggle">🌙</button>
     </nav>
 
     <div class="hero-content">
-      <div class="avatar-circle">A</div>
-      <h1>Hi, I'm Arzoo</h1>
-      <p id="tagline"></p>
-      <button class="cta" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
+      <div class="avatar-circle flicker">A</div>
+      <h1 class="glitch">Hi, I'm Arzoo</h1>
+      <p id="tagline" class="flicker"></p>
+      <button class="cta">View My Work</button>
     </div>
   </header>
 
   <main>
+
     <section id="about">
-      <h2>About Me</h2>
+      <h2 class="section-title glitch">About Me</h2>
       <div class="about-grid">
         <div>
           <p>I’m a software engineering student at Sheffield Hallam University. I love building immersive, genre-bending experiences—from budget trackers to horror games.</p>
         </div>
         <div>
           <ul>
-            <li>🎮 Unity horror game dev</li>
-            <li>🏎️ F1 simulation & data viz</li>
-            <li>🧠 Fluent in C#, Java, Python, C++</li>
-            <li>💡 Creative + technical thinker</li>
+            <li>Unity horror game dev</li>
+            <li>F1 simulation & data viz</li>
+            <li>Fluent in C#, Java, Python, C++</li>
+            <li>Creative + technical thinker</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section id="projects">
-      <h2>Projects</h2>
+      <h2 class="section-title glitch">Projects</h2>
+
       <div class="filter-buttons">
         <button data-filter="all">All Projects</button>
         <button data-filter="university">University</button>
         <button data-filter="personal">Personal</button>
       </div>
+
       <ul id="project-list">
+
         <li class="project university reveal">
           <h3>Budget Tracker</h3>
           <p>Track expenses with real-time analytics and clean UI.</p>
           <span class="tech-badge">Java, MySQL</span>
         </li>
+
         <li class="project university reveal">
           <h3>College Website</h3>
           <p>Responsive site with student portal and admin dashboard.</p>
           <span class="tech-badge">HTML, CSS, JavaScript</span>
         </li>
+
         <li class="project university reveal">
           <h3>Autodesk Asset Manager</h3>
           <p>Inventory system for managing software licenses and assets.</p>
           <span class="tech-badge">C#, SQL Server</span>
         </li>
+
         <li class="project personal reveal">
           <h3>F1 Lap Simulator</h3>
           <p>Streamlit app using Python, NumPy, and Matplotlib to visualize race strategy.</p>
           <span class="tech-badge">Python, Streamlit</span>
         </li>
+
         <li class="project personal reveal">
           <h3>Unity Horror Game</h3>
           <p>A psychological thriller with custom AI and grotesque transformations.</p>
           <span class="tech-badge">Unity, C#</span>
         </li>
+
+        <li class="project personal reveal">
+          <h3>My AI Research Assistant</h3>
+          <p>An intelligent assistant that summarizes papers, extracts insights, and automates research workflows.</p>
+          <span class="tech-badge">Python, NLP, Streamlit, OpenAI API</span>
+        </li>
+
+        <li class="project personal reveal">
+          <h3>SustainWear</h3>
+          <p>A sustainability-focused fashion platform recommending eco‑friendly outfits using data-driven scoring.</p>
+          <span class="tech-badge">React, Node.js, MongoDB</span>
+        </li>
+
       </ul>
     </section>
 
     <section id="skills">
-      <h2>Skills</h2>
+      <h2 class="section-title glitch">Skills</h2>
       <input type="text" id="skill-search" placeholder="Search skills...">
       <div class="skills-grid">
         <span class="reveal">C#</span>
@@ -99,26 +137,28 @@
     </section>
 
     <section id="experience">
-      <h2>Experience</h2>
+      <h2 class="section-title glitch">Experience</h2>
       <ul class="timeline">
-        <li><span>🎓</span> 2025 – Autodesk Asset Manager (University)</li>
-        <li><span>🏎️</span> 2025 – F1 Lap Simulator (Personal)</li>
-        <li><span>🌐</span> 2024 – College Website (Coursework)</li>
+        <li>2025 – Autodesk Asset Manager (University)</li>
+        <li>2025 – F1 Lap Simulator (Personal)</li>
+        <li>2024 – College Website (Coursework)</li>
       </ul>
     </section>
 
     <section id="contact">
-      <h2>Contact Me</h2>
+      <h2 class="section-title glitch">Contact Me</h2>
       <form>
         <input type="email" placeholder="Your email" required>
         <textarea placeholder="Your message" required></textarea>
         <button type="submit">Send</button>
       </form>
+
       <div class="socials">
-        <a href="https://github.com/arzoo" target="_blank">GitHub</a>
-        <a href="mailto:arzoo@example.com">Email</a>
+        <a href="https://github.com/junk34" target="_blank">GitHub</a>
+        <a href="mailto:haroonarzoo77@gmail.com">Email</a>
       </div>
     </section>
+
   </main>
 
   <footer>
@@ -128,6 +168,7 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
 
 
 
